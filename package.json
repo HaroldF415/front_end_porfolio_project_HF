@@ -1,0 +1,22 @@
+{
+  "name": "front_end_portfolio_project_hf",
+  "version": "1.0.0",
+  "description": "Exploring The Cosmos",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaroldF415/front_end_porfolio_project_HF.git"
+  },
+  "keywords": [
+    "space"
+  ],
+  "author": "Harold F.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaroldF415/front_end_porfolio_project_HF/issues"
+  },
+  "homepage": "https://github.com/HaroldF415/front_end_porfolio_project_HF#readme"
+}
