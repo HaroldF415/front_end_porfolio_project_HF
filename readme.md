@@ -1,5 +1,15 @@
 # Front-End Portfolio Project
 
+# Narritive
+
+## Exploring The Cosmos: Unveiling The Secrets Of The Universe
+
+Welcome to our website, where we take you on jourcney through the vast expanse of space. Our mission is to uncover the mysteries of the universe and share our knowledge and passion for space exploration with you.
+
+Our website is designed for anyone with an interest in space, from amateur stargazers to professional astronomers. We offer a wide range of content, including stunning images and videos of celestial bodies, in-depth articles on current space research and discoveries, and interactive features that allow you to explore the space data and imagery.
+
+### Welcome to Space - The Final Frontier!
+
 ---
 
 ## Requirements
