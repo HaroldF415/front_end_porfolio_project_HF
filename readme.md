@@ -1,8 +1,10 @@
 # Front-End Portfolio Project
 
-# Narritive
-
 ## Exploring The Cosmos: Unveiling The Secrets Of The Universe
+
+![Pillars_of_Creation](/assests/nasa_pillars_of_creation.png)
+
+# Narritive
 
 Welcome to our website, where we take you on jourcney through the vast expanse of space. Our mission is to uncover the mysteries of the universe and share our knowledge and passion for space exploration with you.
 
