@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Configuration Files
+.env
+.vscode
+
+# Logs
+access.log
+debug.log
+error.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
