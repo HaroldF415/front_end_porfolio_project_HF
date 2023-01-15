@@ -6,7 +6,7 @@ I've been keeping track of how I build my projects as a reminder of what I tried
 
 ### Bug #1
 
-A few weeks back a fellow from my cohort had an idea of creating 95% of the html elements on the `main.js` file and then render/append them to the DOM. This worked fine for that specific project we worked on but I believe when we introduce Bootstrap something breaks. While writing this bug I will try to recreate the bug and see if I can fix it.
+A few weeks back a fellow from my cohort had an idea of creating 95% of the html elements on the `main.js` file and then render/append them to the DOM. This worked fine for that specific project we worked on but I believe when we introduce Bootstrap something breaks. I will try to recreate the bug and log the results.
 
 ```html
 <!-- code inside the body -->
