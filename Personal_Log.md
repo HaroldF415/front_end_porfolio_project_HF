@@ -96,11 +96,162 @@ It seems in my effort to recreate the bug I may have fixed it. Almost all the pa
 
 I'm a bit hesitant to go into this bug since the first bug sort of disproves it. But I will still write it down because it did allow me to learn a few things like the difference between `forEach()` and `forLoop()`.
 
+P.S. I will point out that this next bug happened with the `divs` already in the `index.html` file. I did not create them in the `main.js` file. So I may need to recreated it with the `divs` created in the `main.js` file. We shall see. Come along for the ride.
+
+```html
+<div class="col-md card p-4 bg-secondary mx-auto" style="width: 18rem">
+  <img alt="" class="card-img-top" />
+  <div class="card-body">
+    <div class="bg-dark rounded p-1">
+      <p class="card-title p0"></p>
+    </div>
+    <p class="card-text p1"></p>
+    <p class="card-text p2"></p>
+    <p class="card-text p3"></p>
+    <a href="#" class="btn btn-dark">Go somewhere</a>
+  </div>
+</div>
+
+<div class="col-md card p-4 bg-secondary mx-auto" style="width: 18rem">
+  <img alt="" class="card-img-top" />
+  <div class="card-body">
+    <div class="bg-dark rounded p-1">
+      <p class="card-title p0"></p>
+    </div>
+    <p class="card-text p1"></p>
+    <p class="card-text p2"></p>
+    <p class="card-text p3"></p>
+    <a href="#" class="btn btn-dark">Go somewhere</a>
+  </div>
+</div>
+
+<div class="col-md card p-4 bg-secondary mx-auto" style="width: 18rem">
+  <img alt="" class="card-img-top" />
+  <div class="card-body">
+    <div class="bg-dark rounded p-1">
+      <p class="card-title p0"></p>
+    </div>
+    <p class="card-text p1"></p>
+    <p class="card-text p2"></p>
+    <p class="card-text p3"></p>
+    <a href="#" class="btn btn-dark">Go somewhere</a>
+  </div>
+</div>
+```
+
 The following will be a copy and paste from the previous `readme.md` file I created:
 
-On the night of January 9th, 2023 around 10pm I started to have an idea of displaying cards on my front-end-porfolio project. Learning Bootstrap was sort of easy. I read some of the documentation provided on their site while also watching a YouTube video explaining how to use BootStrap Properly.
+On the night of January 9th, 2023 around 10pm I started to have an idea of displaying cards on my front-end-porfolio project. Learning Bootstrap was sort of easy. I read some of the documentation provided on their site while also watching a YouTube video explaining how to use BootStrap properly.
 
 ## Here is an example of their default card:
+
+![BootStrap Default Card](./assets/bootstrapDefaultCard.png)
+
+# While trying to recreate the bug I fixed it.
+
+Technically this was not a bug but a foolish mistake on my part. With the `html` code provided above I had this in my `main.js` file:
+
+```js
+// returns a NodeList of all the divs with the class of "card" in this case there are 3
+const cards = document.querySelectorAll(".cards");
+
+// since I know there are three results from the API call I will now use a forEach loop to iterate throught the cards.
+cards.forEach((card, index) => {
+  const { id, name, status, image, species } = characters[index];
+
+  const imgTop = card.querySelector(".card-img-top");
+  imgTop.src = image;
+  imgTop.alt = name;
+
+  // my first mistake was adding the following line of code
+  // card.append(imgTop);
+
+  const cardBody = card.querySelector(".card-body");
+
+  // the line below and the line after do the same thing
+  const cardTitle = card.querySelector(".card-title");
+  // const cardTitle = cardBody.querySelector(".card-title");
+
+  cardTitle.textContent = name;
+
+  const p1 = card.querySelector(".p1");
+  p1.textContent = `Status: ${status}`;
+
+  const p2 = card.querySelector(".p2");
+  p2.textContent = `Species: ${species}`;
+
+  const p3 = card.querySelector(".p3");
+  p3.textContent = `ID: ${id}`;
+
+  // the lines below was in the original code which again is the culprit of the so called bug
+  // cardBody.append(cardTitle, p1, p2, p3);
+  // mainContainer.append(card);
+});
+```
+
+I believed the culprit for the bug was the use of `forEach()` instead of a `forLoop()`. I was wrong. The culprit was the line of code that I commented out. I was appending elements back to the card when they were already there. All I was doing here in the `main.js` was updating their content. There was no need to appened them again which would result in something I thought was a bug.
+
+## Here is what it looked like
+
+![Bug #002](./assets/forEachLoopResult.png)
+
+But after thinking about how to recreate the bug I found my mistake and fixed it. Here is what it looks like now:
+
+```js
+const cards = document.querySelectorAll(".cards");
+
+cards.forEach((card, index) => {
+  const { id, name, status, image, species } = characters[index];
+
+  const imgTop = card.querySelector(".card-img-top");
+  imgTop.src = image;
+  imgTop.alt = name;
+
+  const cardBody = card.querySelector(".card-body");
+  const cardTitle = card.querySelector(".card-title");
+  cardTitle.textContent = name;
+
+  const p1 = card.querySelector(".p1");
+  p1.textContent = `Status: ${status}`;
+
+  const p2 = card.querySelector(".p2");
+  p2.textContent = `Species: ${species}`;
+
+  const p3 = card.querySelector(".p3");
+  p3.textContent = `ID: ${id}`;
+});
+```
+
+## Here is what it looks like. The CSS might be a lil off
+
+![Rick&MortyBugFix](./assets/code_refactored.png)
+
+## Another way to tackle this might be using a `forLoop()`
+
+```js
+const cards = document.querySelectorAll(".cards");
+
+for (let i = 0; i < cards.length; i++) {
+  const { id, name, status, image, species } = characters[i];
+
+  const imgCard = cards[i].querySelector(".card-img-top");
+  imgCard.src = image;
+  imgCard.alt = name;
+
+  const cardBody = cards[i].querySelector(".card-body");
+  const cardTitle = cardBody.querySelector(".card-title");
+  cardTitle.textContent = name;
+
+  const p1 = cards[i].querySelector(".p1");
+  p1.textContent = status;
+
+  const p2 = cards[i].querySelector(".p2");
+  p2.textContent = species;
+
+  const p3 = cards[i].querySelector(".p3");
+  p3.textContent = id;
+}
+```
 
 # Resources
 
