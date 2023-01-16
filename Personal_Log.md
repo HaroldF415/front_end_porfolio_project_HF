@@ -255,8 +255,57 @@ for (let i = 0; i < cards.length; i++) {
 
 # 01/16/2023
 
-Today I will add the functionality for the
+Today I will add the functionality for the project I'm working on. As stated above I will be working with Bootstrap. I have already messed with writting css over the years and I believe I have a pretty good grasp on it. So Bootstrap will serve as a step up.
+
+## Bootstrap
+
+What is it? From their website and from many other resources like YouTube videos I've watched I can say that it is a very popular Framework that provides the user with pre-designed CSS and Javascript components. This helps developers like myself immensely and we can quickly create responsive, mobile-first websites. This allows me to focus primarily on the functionality rather than the design.
+
+Some questions I had when I looked into Bootstrap years ago were:
+
+## What is a Framework?
+
+A framework is a set of pre-written code that provides a structure for building a specific type of application or service. In the case of Boostrap, it is a front-end framework. It provides a wide range of pre-designed components such as a navbar, cards, buttons, etc. Bootstrap also allows us to customize said components to our specific needs if we wish to do so.
+
+Bootstrap is built using HTML, CSS, and Javascript, and it makes use of a responsive grid system. This means that the website will be responsive to the device it is being viewed on. This is called mobile-first design. To change the look and feel of certain components that we are using with Bootstrap. Bootstrap allows us to add classes to those components and they will style the typography, colors, and spacing of the component.
+
+## What is mobile-first design?
+
+When I first started my journey into web development circa 2012, I was told that we should first think about desinging our websites for the desktop browser first and then make it responsive for mobile. This is the opposite of what Bootstrap is doing. This means that the website will be designed for mobile first and then we will make it responsive for desktop. This is a very popular way of designing websites now.
+
+So let's get on with it.
+
+## Background info on my studies
+
+When I started learning `html` I wanted to find out why we are using certain elements and what they are used for. I researched the elements and came across `html` semantics. I learned that we should use the correct element for the correct purpose. For example, we should use a `nav` element for navigation. This is because it is a semantic element. It tells the browser that this is a navigation element. This is important for accessibility and search engine optimization. This is also important for screen readers. Screen readers are used by people with visual impairments. They are used to read the content of a website to the user. This is important because it allows people with visual impairments to use the internet. This is also important for search engine optimization because search engines like Google use the `html` semantics to determine what the content of a website is about. I paid close attention to these details because at the same time I was learning `html` I was also reading [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) by [Donald Norman](https://en.wikipedia.org/wiki/Don_Norman). It is an amazing book and I highly recommend for people to read it. I remember bits and pieces of it but the chapter that stood out to me was how people pay close attention to the shape of a handle. It blew my mind obviously if I remember it like 10yrs later that there are people that pay alot of attention to the design of a door handle.
+
+I believe that's what I'm doing here. Going into extreme detail of why I'm using certain things.
+
+## The Navigation Section Element
+
+In its essence it is an `html` element that is used to indicate that the content within the element is a section of navigation links. Using the `<nav>` element helps keep the `html` semantically correct by clearly indication the purpose of the content within the element.
+
+In school they always referred to `html` as the structure, the foundation, the skeleton of our site. Until this day I still believe this. Different elements have different purposes. We should use the correct element for the correct purpose. This is the reason why I'm using the `<nav>` element for my navigation.
+
+## `<nav>` and Bootstrap
+
+There are many classes we can use with the `<nav>` element and make it look pretty let's go over some of them:
+
+- `.navbar`: This is the main class that is used to create the navbar container.
+- `.navbar-brand`: This class is used to style the text or image that is used as the logo or brand name within the navbar.
+- `.navbar-nav`: This class is used to create the unordered list that holds the navigation links.
+- `.nav-item`: This class is used to style each individual navigation list item within the navbar.
+- `.nav-link`: This class is used to style the anchor tag that is used within each of the navigation list item.
+- `.navbar-toggler`: This class is used to create and style a button that is used to toggle the navbar on mobile devices.
+- `.navbar-collapse`: This class is used to create the container for the navigation list items/links that is hidden in smaller screens and is revealed when the navbar toggler button is clicked.
+- `.navbar-text`: this class is used to style the text that is used within the navbar.
+- `.navbar-expand`: This class is used to determine the breakpoint at which the navbar will collapse and the navbar toggler button will be revealed.
+  - `.navbar-expand-lg`: This class is used to determine that the navbar will collapse at the large breakpoint. Which is at around 992px.
 
 # Resources
 
 [Testing an API with Postman](https://circleci.com/blog/testing-an-api-with-postman/)
+
+[Bootstrap Navbar Tutorial](https://www.youtube.com/watch?v=qNifU_aQRio)
+
+[The Navigation Section Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
