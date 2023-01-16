@@ -253,6 +253,10 @@ for (let i = 0; i < cards.length; i++) {
 }
 ```
 
+# 01/16/2023
+
+Today I will add the functionality for the
+
 # Resources
 
 [Testing an API with Postman](https://circleci.com/blog/testing-an-api-with-postman/)
