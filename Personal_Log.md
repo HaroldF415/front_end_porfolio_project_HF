@@ -325,7 +325,36 @@ There are many classes we can use with the `<nav>` element and make it look pret
 - `.navbar-collapse`: This class is used to create the container for the navigation list items/links that is hidden in smaller screens and is revealed when the navbar toggler button is clicked.
 - `.navbar-text`: this class is used to style the text that is used within the navbar.
 - `.navbar-expand`: This class is used to determine the breakpoint at which the navbar will collapse and the navbar toggler button will be revealed.
+
   - `.navbar-expand-lg`: This class is used to determine that the navbar will collapse at the large breakpoint. Which is at around 992px.
+
+  ## My implementation
+
+  ```html
+  <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark py-4">
+    <div class="container">
+      <a href="index.html" class="navbar-brand text-light text-lg"><span>Home</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto text-center">
+          <li class="nav-item">
+            <a href="/planets/mars.html" class="nav-link">Mars</a>
+          </li>
+          <li class="nav-item">
+            <a href="#earth" class="nav-link">Earth</a>
+          </li>
+          <li class="nav-item">
+            <a href="#jupiter" class="nav-link">Jupiter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  ```
+
+Updating readme.md
 
 # Resources
 
@@ -334,6 +363,10 @@ There are many classes we can use with the `<nav>` element and make it look pret
 [Bootstrap Navbar Tutorial](https://www.youtube.com/watch?v=qNifU_aQRio)
 
 [The Navigation Section Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+
+[The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things)
+
+[Donald Norman](https://en.wikipedia.org/wiki/Don_Norman)
 
 [Difference between forEach and forLoop in Javascript](https://www.geeksforgeeks.org/difference-between-foreach-and-for-loop-in-javascript/)
 
