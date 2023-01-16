@@ -253,6 +253,31 @@ for (let i = 0; i < cards.length; i++) {
 }
 ```
 
+# Difference between `forEach()` and `forLoop()`
+
+So what is the difference between the 'forEach' loop and the 'forLoop'?
+Well in class we have been instructed that the 'forEach' loop is a higher order function. It takes a callback function as an argument. The callback function is executed for each element in the array. The 'forLoop' is a lower order function. It is a simple loop that iterates over an array. Digging deeper I found out that the 'forEach' loop is a method that is called on an array like object aka in this case the NodeList.
+Meanwhile the 'forLoop' is a statement that is used to loop through a block of code.
+
+So if they do the same thing is there a difference? The next question I asked was..... which is faster?
+The answer is that the 'forLoop' is faster than the 'forEach' loop. The reason for this is that the 'forEach' loop has to check if the array has been modified. The 'forLoop' does not have to check if the array has been modified. The 'forLoop' is also more flexible. It can be used to iterate over any iterable object. The 'forEach' loop can only be used to iterate over an array.
+
+### forEach Loop
+
+- Use to iterate through and array
+- Slower
+- Method of the Array prototype
+- Not as flexible
+
+### forLoop
+
+- Use to iterate through a block of code
+- Faster
+- Statement in JavaScript
+- Flexible
+
+Writing this at 2am... literally to record my findings is very tiresome but I believe in the long run. It will pay off. We learn more from our failures than our achievements. I forgot who said that but it holds very true after I keep failing to write the correct code.
+
 # 01/16/2023
 
 Today I will add the functionality for the project I'm working on. As stated above I will be working with Bootstrap. I have already messed with writting css over the years and I believe I have a pretty good grasp on it. So Bootstrap will serve as a step up.
@@ -309,3 +334,19 @@ There are many classes we can use with the `<nav>` element and make it look pret
 [Bootstrap Navbar Tutorial](https://www.youtube.com/watch?v=qNifU_aQRio)
 
 [The Navigation Section Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+
+[Difference between forEach and forLoop in Javascript](https://www.geeksforgeeks.org/difference-between-foreach-and-for-loop-in-javascript/)
+
+[How to Make Multiple API Requests in Parallel?](https://rapidapi.com/guides/parallel-api-requests)
+
+[How a RESTful API Server Reacts to Requests](https://www.oreilly.com/content/how-a-restful-api-server-reacts-to-requests/)
+
+[The Sequential Network Request Pattern and Why You Should Avoid it!](https://www.webperf.tips/tip/serial-network-requests/)
+
+[Tips for avoiding external and internal API performance issues](https://www.theserverside.com/feature/Tips-for-avoiding-external-and-internal-API-performance-issues)
+
+[Javascript Promise Constructor](https://www.geeksforgeeks.org/javascript-promise-constructor/)
+
+[Promise Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+[Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
