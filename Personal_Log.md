@@ -44,11 +44,11 @@ Just for testing purposes I double check what I'm getting back from the API call
 
 ## Checking API response with Postman
 
-![Rick_&_Morty_API_Response_on_Postman](/assets/Rick_&_Morty_Response_001.png)
+![Rick_&_Morty_API_Response_on_Postman](/assets/md_images/Rick_&_Morty_Response_001.png)
 
 ## Checking API response on the browser
 
-![Rick_&_Morty_API_Response_on_Browser](/assets/Rick_&_Morty_Response_002.png)
+![Rick_&_Morty_API_Response_on_Browser](/assets/md_images/Rick_&_Morty_Response_002.png)
 
 ---
 
@@ -90,7 +90,7 @@ It seems in my effort to recreate the bug I may have fixed it. Almost all the pa
 - I noticed that in my original file where I found the bug, I had two cdn links for BootStraps's CSS. I removed one of them.
 - It may be also that when trying to replicate this bug I forgot to append the contents made in the `main.js` file to the div that was already in the `index.html` file. So if I forgot to append them here. Then most likely I forgot to append them before. Hence causing the bug.
 
-![Rick_&_Morty_Cards_on_the_DOM](/assets/Rick_&_Morty_Response_003.png)
+![Rick_&_Morty_Cards_on_the_DOM](/assets/md_images/Rick_&_Morty_Response_003.png)
 
 # Bug #002 - `ForEach()` vs. `ForLoop()`
 
@@ -145,7 +145,7 @@ On the night of January 9th, 2023 around 10pm I started to have an idea of displ
 
 ## Here is an example of their default card:
 
-![BootStrap Default Card](./assets/bootstrapDefaultCard.png)
+![BootStrap Default Card](./assets/md_images/bootstrapDefaultCard.png)
 
 # While trying to recreate the bug I fixed it.
 
@@ -193,7 +193,7 @@ I believed the culprit for the bug was the use of `forEach()` instead of a `forL
 
 ## Here is what it looked like
 
-![Bug #002](./assets/forEachLoopResult.png)
+![Bug #002](./assets/md_images/forEachLoopResult.png)
 
 But after thinking about how to recreate the bug I found my mistake and fixed it. Here is what it looks like now:
 
@@ -224,7 +224,7 @@ cards.forEach((card, index) => {
 
 ## Here is what it looks like. The CSS might be a lil off
 
-![Rick&MortyBugFix](./assets/code_refactored.png)
+![Rick&MortyBugFix](./assets/md_images/code_refactored.png)
 
 ## Another way to tackle this might be using a `forLoop()`
 
