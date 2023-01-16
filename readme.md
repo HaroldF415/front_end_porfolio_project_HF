@@ -2,7 +2,7 @@
 
 ## Exploring The Cosmos: Unveiling The Secrets Of The Universe
 
-![Pillars_of_Creation](/assests/nasa_pillars_of_creation.png)
+![Pillars_of_Creation](/assets/nasa_pillars_of_creation.png)
 
 # Narritive
 
