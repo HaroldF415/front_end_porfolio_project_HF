@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/HaroldF415/front_end_porfolio_project_HF/issues"
   },
-  "homepage": "https://github.com/HaroldF415/front_end_porfolio_project_HF#readme"
+  "homepage": "https://github.com/HaroldF415/front_end_porfolio_project_HF#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
