@@ -1,6 +1,8 @@
 # Front-End Portfolio Project
 
-## Exploring The Cosmos: Unveiling The Secrets Of The Universe - [Visit The Site](https://haroldf415.github.io/pursuit_portfolio_project/index.html)
+## Exploring The Cosmos: Unveiling The Secrets Of The Universe -
+
+## [Visit The Site](https://haroldf415.github.io/pursuit_portfolio_project/index.html)
 
 ![Pillars_of_Creation](/assets/md_images/nasa_pillars_of_creation.png)
 
