@@ -46,9 +46,9 @@
     <!-- Rover Selection -->
     <section class="bg-dark-subtle">
       <div class="container bg-dark-subtle w-50">
-        <select class="form-select" aria-label="Rover Selection">
-          <option selected>Select a rover:</option>
-          <option value="curiosity">Curiosity</option>
+        <label for="rover_selection"><span class="h3">Select a rover: </span></label>
+        <select class="form-select rover_selection" aria-label="Rover Selection" name="rover_selection">
+          <option value="curiosity" selected>Curiosity</option>
           <option value="opportunity">Opportunity</option>
           <option value="spirit">Spirit</option>
         </select>
@@ -61,8 +61,8 @@
         <div class="row">
           <div class="col-md">
             <div class="card bg-dark text-info">
-              <div class="card-body text-center">
-                <h2 class="card-title py-4">Manifest Information</h2>
+              <div class="card-body text-right">
+                <div class="container text-center"><h2 class="card-title py-4">Manifest Information</h2></div>
                 <p class="card-text manifest_name"><strong>Name: .......... </strong></p>
                 <p class="card-text manifest_launch_date"><strong>Launch Date: .......... </strong></p>
                 <p class="card-text manifest_landing_date"><strong>Landing Date: .......... </strong></p>
@@ -77,8 +77,30 @@
       </div>
     </section>
 
+    <!-- Sol Selection -->
+    <section class="bg-dark text-light py-4 sol_selection_container">
+      <div class="container w-50">
+        <label for="sol_selection"><span class="h3">Select Sol date: </span></label>
+        <select name="sol_selection" id="sol_selection" class="form-select sol_selection">
+          <!-- how to put a placeholder on an option element -->
+          <option value="placeholder" placeholder="select" selected></option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Photos available by sol -->
+    <section class="bg-dark-subtle py-4 sol_container"></section>
+
+    <!-- Camera Selection -->
+    <section class="bg-dark text-light py-4 camera_selection_container">
+      <div class="container w-50">
+        <label for="camera_selection"><span class="h3">Select a Rover Camera: </span></label>
+        <select name="camera_selection" id="camera_selection" class="form-select camera_select"></select>
+      </div>
+    </section>
+
     <!-- Planets -->
-    <section class="bg-dark">
+    <!-- <section class="bg-dark">
       <div class="container align-items-center">
         <div class="row text-center">
           <div class="col-md card p-4 bg-secondary mx-auto planet-card-mars" style="width: 18rem">
@@ -115,7 +137,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

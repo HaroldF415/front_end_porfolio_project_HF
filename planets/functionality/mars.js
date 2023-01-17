@@ -1,4 +1,4 @@
-const roverSelection = document.querySelector(".form-select");
+const roverSelection = document.querySelector(".rover_selection");
 
 onload();
 
@@ -25,11 +25,12 @@ function fetchInformation(roverName, fetchType) {
 
 function fetchManifest(roverName) {
   const baseURL = "https://api.nasa.gov/mars-photos/api/v1/manifests/";
-  const apiKey = "DEMO_KEY";
+  const apiKey = "cj41OPe4xFddhFHxeEB4iMST6rzNpBJwSpsQc5Zw";
 
   fetch(`${baseURL}${roverName}/?api_key=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
+      populateSolSelection(data);
       displayManifest(data);
     });
 }
@@ -59,6 +60,72 @@ function displayManifest(data) {
   manifestTotalPhotos.append(` ${data.photo_manifest.total_photos}`);
 }
 
+const solSelection = document.querySelector(".sol_selection");
+
+function populateSolSelection(data) {
+  const solsAvailable = data.photo_manifest.photos.map((photo) => photo.sol);
+
+  solsAvailable.forEach((sol) => {
+    const solOption = document.createElement("option");
+    solOption.value = sol;
+    solOption.append(sol);
+    solSelection.append(solOption);
+  });
+
+  createEventListenerForSolSelection(data);
+}
+
+function createEventListenerForSolSelection(data) {
+  solSelection.addEventListener("change", (event) => {
+    const sol = event.target.value;
+    displaySolPhotoInfo(data, sol);
+  });
+}
+
+function displaySolPhotoInfo(data, day) {
+  const solContainer = document.querySelector(".sol_container");
+  solContainer.innerHTML = "";
+
+  const photosArrayBySol = data.photo_manifest.photos;
+
+  const solByDay = photosArrayBySol.find((photo) => photo.sol === parseInt(day));
+
+  const solNum = solByDay.sol;
+
+  const sol = document.createElement("div");
+  sol.classList.add("container", "text-dark");
+
+  const solH2 = document.createElement("h2");
+  solH2.classList.add(`sol_${solNum}`);
+  solH2.append(`Sol: ${solNum}`);
+
+  const solEarthDate = document.createElement("p");
+  solEarthDate.classList.add(`earth_date`);
+  solEarthDate.append(`Earth Date: ${solByDay.earth_date}`);
+
+  const solTotalPhotos = document.createElement("p");
+  solTotalPhotos.classList.add(`total_photos`);
+  solTotalPhotos.append(`Total Photos: ${solByDay.total_photos}`);
+
+  const solCameraListContainer = document.createElement("div");
+  solCameraListContainer.classList.add(`available_cameras`);
+  const solCameraListH2 = document.createElement("h2");
+  solCameraListH2.append("Available Cameras");
+
+  const solCameraList = document.createElement("ul");
+  solCameraList.classList.add(`camera_list`);
+  solByDay.cameras.forEach((camera) => {
+    const cameraItem = document.createElement("li");
+    cameraItem.append(camera);
+    solCameraList.append(cameraItem);
+  });
+
+  solCameraListContainer.append(solCameraListH2, solCameraList);
+
+  sol.append(solH2, solEarthDate, solTotalPhotos, solCameraListContainer);
+  solContainer.append(sol);
+}
+
 function clearInformation() {
   const manifestName = document.querySelector(".manifest_name");
   manifestName.innerHTML = `<strong>Name: .......... </strong>`;
@@ -80,13 +147,7 @@ function clearInformation() {
 
   const manifestTotalPhotos = document.querySelector(".manifest_total_photos");
   manifestTotalPhotos.innerHTML = `<strong>Total Photos: .......... </strong>`;
-}
-// function constructURL(roverName) {
-//   const baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/photos?";
-//   const sol = 1000;
-//   const type = "photos"
-//   const rover = roverName;
-//   const apiKey = "DEMO_KEY";
 
-//   https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
-// }
+  const solContainer = document.querySelector(".sol_container");
+  solContainer.innerHTML = "";
+}
