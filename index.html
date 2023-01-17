@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="styleshee" href="./style/style.css" />
+    <script type="module" src="main.js" defer></script>
     <title>Exploring Space</title>
   </head>
   <body class="bg-dark" style="height: 2000px">
-    <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark py-4 border-bottom border-light-subtle">
+    <!-- Nav -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark py-4 border-bottom border-light-subtle">
       <div class="container">
         <a href="index.html" class="navbar-brand text-light text-lg"><span>Home</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
@@ -30,6 +33,35 @@
         </div>
       </div>
     </nav>
+
+    <!-- Narrative -->
+    <section class="bg-dark-subtle text-dark text-center">
+      <div class="container py-5 align-items-center">
+        <h1 class="">Space - The Final Frontier</h1>
+        <div class="card py-4 border border-dark-subtle bg-primary-subtle">
+          <img class="img-fluid card-img-top w-50 mx-auto landing-img" src="/assets/md_images/nasa_pillars_of_creation.png" alt="Pillars_of_Creation" />
+        </div>
+        <p class="lead py-4">
+          Welcome to our website, where we take you on journey through the vast expanse of space. Our mission is to uncover the mysteries of the universe and share our knowledge and passion for space exploration with you. Our
+          website is designed for anyone with an interest in space, from amateur stargazers to professional astronomers. We offer a wide range of content, including stunning images and videos of celestial bodies, in-depth
+          articles on current space research and discoveries, and interactive features that allow you to explore the space data and imagery.
+        </p>
+      </div>
+    </section>
+
+    <!-- NASA APOD -->
+    <section>
+      <div class="container bg-dark text-light text-center py-5">
+        <h1>NASA - Astronomy Picture of the Day</h1>
+        <img src="" alt="" class="mx-auto d-block img-thumbnail card-img-top nasa-image" />
+        <div class="container py-4">
+          <p class="apod-title"></p>
+          <p class="apod-credit"></p>
+          <p class="apod-date"></p>
+          <p class="apod-description"></p>
+        </div>
+      </div>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   </body>
