@@ -354,7 +354,9 @@ There are many classes we can use with the `<nav>` element and make it look pret
   </nav>
   ```
 
-Updating readme.md
+# `sticky-top` vs `fixed-top`
+
+In Bootstrap, sticky-top is a class that makes an element "stick" to the top of the viewport when the user scrolls past it. The element will remain "fixed" to the top of the viewport until the user scrolls back up to the element's original position. fixed-top class is similar, but the element will always remain fixed to the top of the viewport, regardless of the user's scroll position.
 
 # Resources
 
