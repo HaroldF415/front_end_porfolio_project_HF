@@ -45,7 +45,7 @@
 
     <!-- Rover Selection -->
     <section class="bg-dark-subtle">
-      <div class="container bg-dark-subtle w-50">
+      <div class="container bg-dark-subtle w-25">
         <label for="rover_selection"><span class="h3">Select a rover: </span></label>
         <select class="form-select rover_selection" aria-label="Rover Selection" name="rover_selection">
           <option value="curiosity" selected>Curiosity</option>
@@ -79,18 +79,22 @@
 
     <!-- Sol Selection -->
     <section class="bg-dark text-light py-4 sol_selection_container">
-      <div class="container w-50 div_sol_selection"></div>
+      <div class="container w-25 div_sol_selection"></div>
     </section>
 
     <!-- Photos available by sol -->
-    <section class="bg-dark-subtle py-4 sol_container"></section>
+    <section class="bg-dark-subtle py-5" style="height: 350px">
+      <div class="align-items-center sol_container"></div>
+    </section>
 
     <!-- Camera Selection -->
     <section class="bg-dark text-light py-4 camera_selection_container">
-      <div class="container w-50">
-        <label for="camera_selection"><span class="h3">Select a Rover Camera: </span></label>
-        <select name="camera_selection" id="camera_selection" class="form-select camera_select"></select>
-      </div>
+      <div class="container w-50 div_camera_selection"></div>
+    </section>
+
+    <!-- Photos -->
+    <section class="bg-dark-subtle py-5">
+      <div class="text-center photo_container mx-auto"></div>
     </section>
 
     <!-- Planets -->

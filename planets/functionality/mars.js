@@ -9,7 +9,11 @@ function onload() {
 roverSelection.addEventListener("change", (event) => {
   const rover = event.target.value;
   changeDisplay(rover);
-  fetchInformation(rover, "manifest");
+  const URL_INFO = {
+    fetchType: "manifest",
+    roverName: rover,
+  };
+  fetchInformation(URL_INFO);
 });
 
 function changeDisplay(roverName) {
@@ -17,22 +21,36 @@ function changeDisplay(roverName) {
   landingPage.src = `../../assets/rovers/mars_${roverName}_rover.jpg`;
 }
 
-function fetchInformation(roverName, fetchType) {
-  if (fetchType === "manifest") {
-    fetchManifest(roverName);
+function fetchInformation(URL_INFO) {
+  if (URL_INFO.fetchType === "manifest") {
+    fetchManifest(URL_INFO);
+  } else if (URL_INFO.fetchType === "photos") {
+    fetchPhotos(URL_INFO);
   }
 }
 
-function fetchManifest(roverName) {
+function fetchManifest(URL_INFO) {
   const baseURL = "https://api.nasa.gov/mars-photos/api/v1/manifests/";
   const apiKey = "cj41OPe4xFddhFHxeEB4iMST6rzNpBJwSpsQc5Zw";
 
-  fetch(`${baseURL}${roverName}/?api_key=${apiKey}`)
+  fetch(`${baseURL}${URL_INFO.roverName}/?api_key=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
       populateSolSelection(data);
       displayManifest(data);
     });
+}
+
+function fetchRoverPhotos(URL_INFO) {
+  const baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/";
+  const apiKey = "cj41OPe4xFddhFHxeEB4iMST6rzNpBJwSpsQc5Zw";
+
+  fetch(`${baseURL}${URL_INFO.rover}/photos?sol=${URL_INFO.sol}&camera=${URL_INFO.camera}&page=1&api_key=${apiKey}`)
+    .then((response) => response.json())
+    .then((data) => {
+      displayRoverPhotos(data);
+    })
+    .catch((error) => console.log(error));
 }
 
 function displayManifest(data) {
@@ -59,8 +77,6 @@ function displayManifest(data) {
   const manifestTotalPhotos = document.querySelector(".manifest_total_photos");
   manifestTotalPhotos.append(` ${data.photo_manifest.total_photos}`);
 }
-
-// const solSelection = document.querySelector(".sol_selection");
 
 function populateSolSelection(data) {
   createSolSelectionDropDown();
@@ -99,7 +115,6 @@ function createSolSelectionDropDown() {
   solSelection.id = "sol_selection";
 
   divSolSelection.append(solSelectionLabel, solSelection);
-  // createEventListenerForSolSelection(data);
 }
 
 function createEventListenerForSolSelection(data) {
@@ -108,7 +123,31 @@ function createEventListenerForSolSelection(data) {
   solSelection.addEventListener("change", (event) => {
     const sol = event.target.value;
     displaySolPhotoInfo(data, sol);
+    createCameraSelectionDropDown();
+    populateCameraSelection(data, sol);
+    window.scrollTo(0, document.body.scrollHeight);
   });
+}
+
+function createCameraSelectionDropDown() {
+  const divCameraSelection = document.querySelector(".div_camera_selection");
+  divCameraSelection.innerHTML = "";
+
+  const cameraSelectionLabel = document.createElement("label");
+  cameraSelectionLabel.for = "camera_selection";
+
+  const h3CameraSelection = document.createElement("span");
+  h3CameraSelection.classList.add("h3");
+  h3CameraSelection.textContent = "Select a Rover Camera: ";
+
+  cameraSelectionLabel.append(h3CameraSelection);
+
+  const cameraSelection = document.createElement("select");
+  cameraSelection.classList.add("camera_selection", "form-select");
+  cameraSelection.name = "camera_selection";
+  cameraSelection.id = "camera_selection";
+
+  divCameraSelection.append(cameraSelectionLabel, cameraSelection);
 }
 
 function displaySolPhotoInfo(data, day) {
@@ -153,6 +192,111 @@ function displaySolPhotoInfo(data, day) {
 
   sol.append(solH2, solEarthDate, solTotalPhotos, solCameraListContainer);
   solContainer.append(sol);
+}
+
+function populateCameraSelection(data, day) {
+  const cameraSelection = document.querySelector(".camera_selection");
+  cameraSelection.innerHTML = "";
+
+  const photosArrayBySol = data.photo_manifest.photos;
+
+  const solByDay = photosArrayBySol.find((photo) => photo.sol === parseInt(day));
+
+  const solFragment = document.createDocumentFragment();
+
+  solByDay.cameras.forEach((camera, index) => {
+    const cameraOption = document.createElement("option");
+    cameraOption.value = camera;
+    cameraOption.textContent = camera;
+    if (index === 0) {
+      cameraOption.setAttribute("selected", true);
+    }
+    solFragment.append(cameraOption);
+  });
+
+  cameraSelection.append(solFragment);
+
+  createEventListenerForCameraSelection(data);
+}
+
+function createEventListenerForCameraSelection(data) {
+  const cameraSelection = document.querySelector(".camera_selection");
+  const solSelection = document.querySelector(".sol_selection").value;
+  const roverSelection = document.querySelector(".rover_selection").value;
+  // console.log(roverSelection);
+  cameraSelection.addEventListener("change", (event) => {
+    const camera = event.target.value;
+    const URL_INFO = {
+      fetchType: "photos",
+      rover: roverSelection,
+      sol: solSelection,
+      camera: camera,
+    };
+    console.log(URL_INFO);
+    fetchRoverPhotos(URL_INFO);
+  });
+}
+
+function displayRoverPhotos(data) {
+  // clearing contents
+  const photoContainer = document.querySelector(".photo_container");
+  photoContainer.innerHTML = "";
+
+  // creating fragment
+  const photoFragment = document.createDocumentFragment();
+
+  // creating row
+  let photoRow = document.createElement("div");
+  photoRow.classList.add("row", "mx-auto");
+
+  // looping through photos
+  data.photos.forEach((photo, index) => {
+    // create a column
+    const photoColumn = document.createElement("div");
+    photoColumn.classList.add("col-12", "col-md-6", "col-lg-4", "col-xl-3");
+
+    // create a card
+    const photoCard = document.createElement("div");
+    photoCard.classList.add("card");
+
+    const photoCardImg = document.createElement("img");
+    photoCardImg.classList.add("card-img-top");
+    photoCardImg.src = photo.img_src;
+    photoCardImg.alt = photo.camera.full_name;
+
+    const photoCardBody = document.createElement("div");
+    photoCardBody.classList.add("card-body");
+
+    const photoCardTitle = document.createElement("h5");
+    photoCardTitle.classList.add("card-title");
+    photoCardTitle.append(photo.camera.full_name);
+
+    const photoCardText = document.createElement("p");
+    photoCardText.classList.add("card-text");
+    photoCardText.append(`Earth Date: ${photo.earth_date}`);
+
+    photoCardBody.append(photoCardTitle, photoCardText);
+    photoCard.append(photoCardImg, photoCardBody);
+
+    // append card to column
+    photoColumn.append(photoCard);
+
+    // append column to row
+    photoRow.append(photoColumn);
+
+    // append row to fragment
+    photoFragment.append(photoRow);
+
+    // only three elements per row will be shown
+    if ((index + 1) % 3 === 0 || index === data.photos.length - 1) {
+      photoContainer.append(photoRow);
+      // create a new row
+      photoRow = document.createElement("div");
+      photoRow.classList.add("row");
+    }
+  });
+
+  photoContainer.append(photoFragment);
 }
 
 function clearInformation() {
