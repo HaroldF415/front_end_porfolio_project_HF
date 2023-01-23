@@ -60,22 +60,51 @@ function displayManifest(data) {
   manifestTotalPhotos.append(` ${data.photo_manifest.total_photos}`);
 }
 
-const solSelection = document.querySelector(".sol_selection");
+// const solSelection = document.querySelector(".sol_selection");
 
 function populateSolSelection(data) {
+  createSolSelectionDropDown();
+  const solSelection = document.querySelector(".sol_selection");
+
   const solsAvailable = data.photo_manifest.photos.map((photo) => photo.sol);
+  const solFragment = document.createDocumentFragment();
 
   solsAvailable.forEach((sol) => {
     const solOption = document.createElement("option");
     solOption.value = sol;
-    solOption.append(sol);
-    solSelection.append(solOption);
+    solOption.textContent = sol;
+    solFragment.append(solOption);
   });
 
+  solSelection.append(solFragment);
   createEventListenerForSolSelection(data);
 }
 
+function createSolSelectionDropDown() {
+  const divSolSelection = document.querySelector(".div_sol_selection");
+  divSolSelection.innerHTML = "";
+
+  const solSelectionLabel = document.createElement("label");
+  solSelectionLabel.for = "sol_selection";
+
+  const h3SolSelection = document.createElement("span");
+  h3SolSelection.classList.add("h3");
+  h3SolSelection.textContent = "Select a Sol: ";
+
+  solSelectionLabel.append(h3SolSelection);
+
+  const solSelection = document.createElement("select");
+  solSelection.classList.add("sol_selection", "form-select");
+  solSelection.name = "sol_selection";
+  solSelection.id = "sol_selection";
+
+  divSolSelection.append(solSelectionLabel, solSelection);
+  // createEventListenerForSolSelection(data);
+}
+
 function createEventListenerForSolSelection(data) {
+  const solSelection = document.querySelector(".sol_selection");
+
   solSelection.addEventListener("change", (event) => {
     const sol = event.target.value;
     displaySolPhotoInfo(data, sol);
