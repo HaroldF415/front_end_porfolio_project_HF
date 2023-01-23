@@ -4,6 +4,8 @@
 
 ## [Visit The Site](https://haroldf415.github.io/pursuit_portfolio_project/index.html)
 
+[Video Demo](https://us06web.zoom.us/rec/share/tuQQcte6LBFnfNc5l0LZb-67oXELJoySIU35GVQ4K6eVaSHSBEb5iCUBHo31abf5.oggoRuor-DZ3WZb5) passcode: UY@1j#Tt
+
 ![Pillars_of_Creation](/assets/md_images/nasa_pillars_of_creation.png)
 
 # Narritive
